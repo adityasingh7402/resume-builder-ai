@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react'
+import { useSession } from '@/lib/auth-client'
 import { Loader2, Download, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
@@ -81,10 +81,15 @@ export default function ResumePage() {
           <Link href="/dashboard" className="flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back
           </Link>
-          <button className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 text-sm transition-all">
+          <a
+            href={`/api/resume/${resume._id}/export`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 text-sm transition-all"
+          >
             <Download className="w-4 h-4" />
             Export PDF
-          </button>
+          </a>
         </div>
 
         <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-8 space-y-8">

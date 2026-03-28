@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import dbConnect from '@/lib/dbConnect'
 import UserModel from '@/models/User'
-import SubscriptionModel from '@/models/Subscription'
 
 export async function GET() {
   const session = await auth()
@@ -14,9 +13,7 @@ export async function GET() {
   const user = await UserModel.findOne({ email: session.user.email })
   if (!user) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
-  const sub = await SubscriptionModel.findOne({ user_id: user._id })
-
-  return NextResponse.json({ user, subscription: sub })
+  return NextResponse.json({ user })
 }
 
 export async function PATCH(req: NextRequest) {

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from '@/lib/auth-client'
 import { useState } from 'react'
 
 export default function Navbar() {

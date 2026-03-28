@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useSession } from 'next-auth/react'
+import { useSession } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import { Plus, FileText, ChevronRight, Loader2 } from 'lucide-react'
 import { GithubRepo } from '@/lib/github'

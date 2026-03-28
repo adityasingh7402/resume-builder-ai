@@ -6,8 +6,6 @@ import ResumeModel from '@/models/Resume'
 import JobDescriptionModel from '@/models/JobDescription'
 import { getRepoLanguages, getRepoReadme, getUserRepos } from '@/lib/github'
 import { generateResume } from '@/lib/ai'
-import { SUBSCRIPTION_TIERS, FREE_GENERATION_LIMIT } from '@/constants/limits'
-import SubscriptionModel from '@/models/Subscription'
 
 export async function POST(req: NextRequest) {
   const session = await auth()
@@ -23,20 +21,8 @@ export async function POST(req: NextRequest) {
   }
 
   await dbConnect()
-
   const user = await UserModel.findOne({ email: session.user.email })
   if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 })
-
-  // check generation limits
-  const sub = await SubscriptionModel.findOne({ user_id: user._id })
-  if (sub?.tier === SUBSCRIPTION_TIERS.FREE) {
-    if (sub.generation_attempts_used >= FREE_GENERATION_LIMIT) {
-      return NextResponse.json(
-        { error: 'Generation limit reached. Upgrade to Pro.' },
-        { status: 403 }
-      )
-    }
-  }
 
   let jobDescription = ''
   if (jobDescriptionId) {
@@ -50,7 +36,6 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // gather repo data for AI
   const allRepos = await getUserRepos(user.github_username)
   const picked = allRepos.filter((r) => selectedRepos.includes(r.full_name))
 
@@ -84,13 +69,6 @@ export async function POST(req: NextRequest) {
     content,
     ai_model: 'llama-4-scout',
   })
-
-  // bump usage counter
-  if (sub) {
-    await SubscriptionModel.findByIdAndUpdate(sub._id, {
-      $inc: { generation_attempts_used: 1 },
-    })
-  }
 
   return NextResponse.json({ resume }, { status: 201 })
 }

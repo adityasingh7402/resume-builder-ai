@@ -17,46 +17,36 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         const githubProfile = profile as { login?: string }
         const username = githubProfile?.login
-
         if (!username) return false
 
-        const existing = await UserModel.findOne({ email: user.email })
-
+        const existing = await UserModel.findOne({ email: user.email ?? '' })
         if (!existing) {
           await UserModel.create({
-            name: user.name,
-            email: user.email,
-            image: user.image,
+            name: user.name ?? username,
+            email: user.email ?? '',
+            image: user.image ?? '',
             github_username: username,
           })
         }
 
         return true
       } catch (err) {
-        console.error('signIn callback error:', err)
+        console.error('signIn error:', err)
         return false
       }
     },
 
-    async session({ session, token }) {
-      if (session.user && token.sub) {
+    async session({ session }) {
+      if (session.user?.email) {
+        await dbConnect()
         const dbUser = await UserModel.findOne({ email: session.user.email })
         if (dbUser) {
-          // @ts-expect-error extending session
-          session.user.id = dbUser._id.toString()
-          // @ts-expect-error extending session
-          session.user.github_username = dbUser.github_username
+          const u = session.user as unknown as Record<string, unknown>
+          u.id = dbUser._id.toString()
+          u.github_username = dbUser.github_username
         }
       }
       return session
-    },
-
-    async jwt({ token, profile }) {
-      if (profile) {
-        const githubProfile = profile as { login?: string }
-        token.github_username = githubProfile?.login
-      }
-      return token
     },
   },
   pages: {
