@@ -76,6 +76,7 @@ export default function SignInPage() {
                 width={80} 
                 height={80} 
                 className="rounded-2xl shadow-xl border border-neutral-100"
+                unoptimized
               />
               <div className="absolute -bottom-2 -right-2 size-6 bg-blue-600 rounded-lg flex items-center justify-center text-white text-[10px] font-bold">
                 AI

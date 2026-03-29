@@ -80,6 +80,7 @@ export function NavBar({
                   width={40}
                   height={40}
                   className="rounded-lg"
+                  unoptimized
                 />
               </Link>
             </motion.div>
