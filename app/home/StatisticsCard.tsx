@@ -59,7 +59,7 @@ function StatisticsCard() {
         <div className="text-neutral-100 text-3xl rotate-90 md:rotate-0">→</div>
 
         <div className="flex-1 bg-neutral-900 rounded-2xl p-6 border border-neutral-100">
-          <Paragraph variant='muted' className="text-neutral-100 text-sm">With GitCVs</Paragraph>
+          <Paragraph variant='muted' className="text-neutral-100 text-sm">With ResumeAI</Paragraph>
           <Paragraph className="text-neutral-300 text-2xl font-bold tabular-nums">30 min<span className='text-xs pl-2'>/resume</span></Paragraph>
         </div>
       </div>

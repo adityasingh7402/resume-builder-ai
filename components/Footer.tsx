@@ -113,7 +113,7 @@ const Footer = () => {
                 transition={{ duration: 0.5 }}
               >
                 <SubHeading className="text-white mb-3">
-                  GitHub Resume Builder
+                  ResumeAI
                 </SubHeading>
                 <Paragraph className="text-neutral-400 mb-6">
                   Transform your GitHub repositories into professional, ATS-friendly resumes in minutes. Powered by AI.
@@ -204,7 +204,7 @@ const Footer = () => {
               transition={{ duration: 0.5 }}
             >
               <Paragraph className="text-sm text-neutral-500">
-                © {new Date().getFullYear()} GitHub Resume Builder. All rights reserved.
+                © {new Date().getFullYear()} ResumeAI. All rights reserved.
               </Paragraph>
             </motion.div>
 
@@ -244,7 +244,7 @@ const Footer = () => {
             className="mt-0 text-left"
           >
             <Paragraph className="text-xs text-neutral-200">
-              Built by <Link href="https://www.indrabuildswebsites.com/" className="font-semibold underline">Indranil</Link> and <Link href="https://adityaportfolio-two.vercel.app/" className="font-semibold underline">Aditya</Link>  for developers
+              Developed by <Link href="https://adityaportfolio-two.vercel.app/" className="font-semibold underline">Aditya</Link> for developers
             </Paragraph>
           </motion.div>
 

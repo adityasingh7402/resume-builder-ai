@@ -75,10 +75,11 @@ export function NavBar({
             >
               <Link href="/" className="text-xl font-bold text-foreground">
                 <Image
-                  src="/Logo1.svg"
-                  alt="Logo"
+                  src="/logo.png"
+                  alt="ResumeAI Logo"
                   width={40}
-                  height={20}
+                  height={40}
+                  className="rounded-lg"
                 />
               </Link>
             </motion.div>
