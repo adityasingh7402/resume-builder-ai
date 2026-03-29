@@ -1,0 +1,14 @@
+﻿
+.next/types/validator.ts(80,39): error TS2307: 
+Cannot find module 
+'../../app/dashboard/new/page.js' or its 
+corresponding type declarations.
+.next/types/validator.ts(98,39): error TS2307: 
+Cannot find module 
+'../../app/dashboard/resume/[id]/page.js' or its 
+corresponding type declarations.
+app/profile/components/ProfileSection.tsx(19,3): 
+error TS2305: Module '"lucide-react"' has no 
+exported member 'Linkedin'.
+
+

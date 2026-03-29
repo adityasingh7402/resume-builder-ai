@@ -12,6 +12,7 @@ interface RepoData {
 interface GenerateResumeParams {
   repoData: RepoData[]
   role: string
+  experienceLevel?: string
   jobDescription: string
   user: {
     name: string
@@ -21,7 +22,7 @@ interface GenerateResumeParams {
 }
 
 function buildPrompt(params: GenerateResumeParams): string {
-  const { repoData, role, jobDescription, user } = params
+  const { repoData, role, experienceLevel, jobDescription, user } = params
 
   const repoSummaries = repoData.map((rd) => {
     const langs = Object.keys(rd.languages).slice(0, 5).join(', ')
@@ -37,7 +38,7 @@ README excerpt: ${rd.readme || 'N/A'}
 
   return `You are a professional resume writer specializing in tech resumes.
 
-Generate a resume content JSON for a ${role} developer.
+Generate a resume content JSON for a ${role} developer ${experienceLevel ? `with ${experienceLevel} level expertise` : ''}.
 Candidate name: ${user.name}
 ${user.headline ? `Headline: ${user.headline}` : ''}
 ${user.custom_skills.length ? `Extra skills: ${user.custom_skills.join(', ')}` : ''}

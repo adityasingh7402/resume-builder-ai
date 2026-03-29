@@ -1,7 +1,7 @@
 import mongoose, { Document, Schema, Model } from 'mongoose'
 
 export interface IUser extends Document {
-  _id: mongoose.Types.ObjectId
+  full_name: string
   name: string
   email: string
   image?: string
@@ -10,6 +10,7 @@ export interface IUser extends Document {
   location?: string | null
   portfolio_url?: string | null
   linkedin_url?: string | null
+  professional_headline?: string | null
   headline?: string | null
   education: {
     degree: string
@@ -19,7 +20,7 @@ export interface IUser extends Document {
     gpa?: number | null
   }[]
   work_experience: {
-    title: string
+    job_title: string
     company: string
     start_date: Date
     end_date: Date | null
@@ -45,7 +46,7 @@ const EduSchema = new Schema(
 
 const WorkSchema = new Schema(
   {
-    title: { type: String, required: true },
+    job_title: { type: String, required: true },
     company: { type: String, required: true },
     start_date: { type: Date, required: true },
     end_date: { type: Date, default: null },
@@ -56,6 +57,7 @@ const WorkSchema = new Schema(
 
 const UserSchema = new Schema<IUser>(
   {
+    full_name: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     image: { type: String },
@@ -64,6 +66,7 @@ const UserSchema = new Schema<IUser>(
     location: { type: String, default: null },
     portfolio_url: { type: String, default: null },
     linkedin_url: { type: String, default: null },
+    professional_headline: { type: String, default: null },
     headline: { type: String, default: null },
     education: { type: [EduSchema], default: [] },
     work_experience: { type: [WorkSchema], default: [] },

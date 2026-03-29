@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json()
-  const { selectedRepos, role, title, jobDescriptionId } = body
+  const { selectedRepos, role, title, jobDescriptionId, experienceLevel, jobDescription: bodyJobDescription } = body
 
   if (!selectedRepos || selectedRepos.length < 3) {
     return NextResponse.json({ error: 'Select at least 3 repos' }, { status: 400 })
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   const user = await UserModel.findOne({ email: session.user.email })
   if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 })
 
-  let jobDescription = ''
+  let jobDescription = bodyJobDescription || ''
   if (jobDescriptionId) {
     const jd = await JobDescriptionModel.findById(jobDescriptionId)
     if (jd) {
@@ -52,10 +52,11 @@ export async function POST(req: NextRequest) {
   const content = await generateResume({
     repoData,
     role,
+    experienceLevel,
     jobDescription,
     user: {
-      name: user.name,
-      headline: user.headline,
+      name: user.full_name || user.github_username,
+      headline: user.professional_headline,
       custom_skills: user.custom_skills,
     },
   })

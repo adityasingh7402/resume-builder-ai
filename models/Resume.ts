@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document, Model } from 'mongoose'
-import { RESUME_STATUS, RESUME_ROLES, ResumeStatus, ResumeRole } from '@/constants/limits'
+import { RESUME_STATUS, RESUME_ROLES, ResumeStatus, ResumeRole } from '@/constants/limit'
 
 export interface IProject {
   repo_name: string
@@ -20,6 +20,7 @@ export interface IResumeContent {
     other?: string[]
   }
   summary?: string
+  problems_solved?: string[]
 }
 
 export interface IResume extends Document {
@@ -31,8 +32,10 @@ export interface IResume extends Document {
   selected_repos: string[]
   content: IResumeContent
   status: ResumeStatus
+  template: string
   ai_model: string
   pdf_url: string | null
+  pdf_expires_at: Date | null
   createdAt: Date
   updatedAt: Date
 }
@@ -82,8 +85,10 @@ const ResumeSchema = new Schema<IResume>(
       enum: Object.values(RESUME_STATUS),
       default: RESUME_STATUS.DRAFT,
     },
+    template: { type: String, default: 'classic' },
     ai_model: { type: String, default: 'llama-4-scout' },
     pdf_url: { type: String, default: null },
+    pdf_expires_at: { type: Date, default: null },
   },
   { timestamps: true }
 )

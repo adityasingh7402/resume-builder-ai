@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import './globals.css'
 import { SessionProvider } from '@/lib/auth-client'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import { NavBar } from '@/components/Navbar'
 
 const geist = Geist({ subsets: ['latin'] })
 
@@ -25,9 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${geist.className} bg-black text-white antialiased`}>
         <SessionProvider>
-          <Navbar />
+          <NavBar />
           {children}
-          <Footer />
         </SessionProvider>
       </body>
     </html>
