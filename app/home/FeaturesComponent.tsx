@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import localFont from "next/font/local";
+import { CalSans } from '@/lib/fonts';
 import { 
   IconBrandGithub, 
   IconSparkles, 
@@ -16,10 +16,6 @@ import { Container } from '@/components/Container';
 import { cn } from '@/lib/utils';
 import { SubHeading } from '@/components/SubHeading';
 
-const CalSans = localFont({
-  src: [{ path: "../../fonts/CalSans-SemiBold.woff2" }],
-  display: "swap",
-});
 
 interface GridCellProps {
   title: string;

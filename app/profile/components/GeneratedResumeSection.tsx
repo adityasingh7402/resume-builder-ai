@@ -23,14 +23,10 @@ import {
   Loader2,
   Trash2
 } from 'lucide-react'
-import localFont from "next/font/local"
 import { cn } from '@/lib/utils'
+import { CalSans } from '@/lib/fonts'
 import { toast } from 'sonner'
 
-const CalSans = localFont({
-  src: [{ path: "../../../fonts/CalSans-SemiBold.woff2" }],
-  display: "swap",
-})
 
 interface Resume {
   _id: string

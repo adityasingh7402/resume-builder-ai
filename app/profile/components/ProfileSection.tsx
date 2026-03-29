@@ -28,13 +28,9 @@ import {
   Trash2
 } from 'lucide-react'
 import { IconBrandLinkedin } from '@tabler/icons-react'
-import localFont from "next/font/local"
 import { cn } from '@/lib/utils'
+import { CalSans } from '@/lib/fonts'
 
-const CalSans = localFont({
-  src: [{ path: "../../../../fonts/CalSans-SemiBold.woff2" }],
-  display: "swap",
-})
 
 interface Education {
   degree: string
