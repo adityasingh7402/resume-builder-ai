@@ -45,11 +45,11 @@ export function NavBar({
         setIsUserMenuOpen(false)
       }
     }
-    
+
     if (isUserMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside)
     }
-    
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
@@ -75,7 +75,7 @@ export function NavBar({
             >
               <Link href="/" className="text-xl font-bold text-foreground">
                 <Image
-                  src="/logo.png"
+                  src="/logo_image.png"
                   alt="ResumeAI Logo"
                   width={40}
                   height={40}
@@ -135,11 +135,11 @@ export function NavBar({
                     className="inline-flex items-center gap-2 ml-4 text-neutral-800 hover:text-neutral-950 font-medium transition-colors"
                   >
                     {user?.image ? (
-                      <Image 
-                        src={user.image} 
-                        alt="Profile" 
-                        width={32} 
-                        height={32} 
+                      <Image
+                        src={user.image}
+                        alt="Profile"
+                        width={32}
+                        height={32}
                         className="rounded-full border border-neutral-300"
                       />
                     ) : (
@@ -168,9 +168,9 @@ export function NavBar({
                           <UserIcon size={16} />
                           Dashboard
                         </Link>
-                        
+
                         <div className="border-t border-neutral-200 my-1" />
-                        
+
                         <button
                           onClick={() => {
                             signOut()

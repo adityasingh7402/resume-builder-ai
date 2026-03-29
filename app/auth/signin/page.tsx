@@ -19,9 +19,9 @@ export default function SignInPage() {
           className="object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-        
+
         <div className="relative z-10 space-y-6 max-w-xl">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -30,8 +30,8 @@ export default function SignInPage() {
             <Sparkles className="size-4 text-blue-400" />
             <span>AI-Powered Resume Builder</span>
           </motion.div>
-          
-          <motion.h1 
+
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -39,8 +39,8 @@ export default function SignInPage() {
           >
             Craft Your <span className="text-blue-400">Future</span> with Precision.
           </motion.h1>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -64,17 +64,17 @@ export default function SignInPage() {
       {/* Right Part: Login UI */}
       <div className="flex-1 flex items-center justify-center p-8 bg-neutral-50 md:bg-white">
         <div className="w-full max-w-md space-y-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-center"
           >
             <div className="inline-block relative mb-6">
-              <Image 
-                src="/logo.png" 
-                alt="ResumeAI Logo" 
-                width={80} 
-                height={80} 
+              <Image
+                src="/logo_image.png"
+                alt="ResumeAI Logo"
+                width={80}
+                height={80}
                 className="rounded-2xl shadow-xl border border-neutral-100"
                 unoptimized
               />
@@ -82,7 +82,7 @@ export default function SignInPage() {
                 AI
               </div>
             </div>
-            
+
             <h2 className={cn("text-3xl font-bold text-neutral-900 tracking-tight", CalSans.className)}>
               Welcome to <span className="text-blue-600">ResumeAI</span>
             </h2>
@@ -91,7 +91,7 @@ export default function SignInPage() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -104,7 +104,7 @@ export default function SignInPage() {
               <Github className="size-5 group-hover:rotate-12 transition-transform" />
               Continue with GitHub
             </button>
-            
+
             <div className="mt-8 relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-neutral-100" />
@@ -113,7 +113,7 @@ export default function SignInPage() {
                 <span className="bg-white px-2 text-neutral-400 font-medium">Safe & Secure</span>
               </div>
             </div>
-            
+
             <p className="mt-8 text-center text-xs text-neutral-500 leading-relaxed">
               We only request read-access to your public repositories.<br />
               Your data is encrypted and handled with privacy by design.
