@@ -89,8 +89,14 @@ export default function StepThree({
 
       // Wait a moment before transitioning
       setTimeout(() => {
-        const resumeId = data.data?.resume_id
-        onSuccess(resumeId)
+        const resumeId = data.resume?._id || data.resume?.id
+        if (resumeId) {
+          onSuccess(resumeId)
+        } else {
+          console.error('No resume ID found in response:', data)
+          setStatus('error')
+          setErrorMessage('Failed to retrieve generation unique ID')
+        }
       }, 1500)
     } catch (error: any) {
       console.error('Resume generation error:', error)

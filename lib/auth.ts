@@ -21,14 +21,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         const email = user.email || `${username}@github.com`
         const existing = await UserModel.findOne({ email })
+        
+        const userData = {
+          name: user.name ?? username,
+          full_name: user.name ?? username,
+          email,
+          image: user.image ?? '',
+          github_username: username,
+        }
+
         if (!existing) {
-          await UserModel.create({
-            name: user.name ?? username,
-            full_name: user.name ?? username,
-            email,
-            image: user.image ?? '',
-            github_username: username,
-          })
+          await UserModel.create(userData)
+        } else {
+          // Update existing user to keep profile and github info in sync
+          await UserModel.updateOne({ email }, { $set: userData })
         }
 
         return true
