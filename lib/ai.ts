@@ -45,6 +45,8 @@ ${user.custom_skills.length ? `Extra skills: ${user.custom_skills.join(', ')}` :
 
 ${jobDescription ? `Target Job Description:\n${jobDescription.slice(0, 1500)}` : ''}
 
+I will provide ${repoData.length} GitHub repositories. You MUST include ALL ${repoData.length} of them in the "projects" array. Do not skip any repository.
+
 GitHub Projects:
 ${repoSummaries.join('\n\n')}
 
@@ -70,6 +72,8 @@ Return ONLY valid JSON matching this structure:
 }
 
 Rules:
+- Include EXACTLY ${repoData.length} projects in the projects array. Do not skip any.
+- Each project MUST have 3-4 detailed bullet points.
 - bullets must start with strong action verbs (Built, Designed, Implemented, etc.)
 - be specific, quantify where possible
 - tailor to the job description if provided
@@ -80,9 +84,9 @@ export async function generateResume(params: GenerateResumeParams) {
   const prompt = buildPrompt(params)
 
   const response = await groq.chat.completions.create({
-    model: 'meta-llama/llama-4-scout-17b-16e-instruct',
+    model: 'llama-3.3-70b-versatile',
     messages: [{ role: 'user', content: prompt }],
-    temperature: 0.4,
+    temperature: 0.3,
     response_format: { type: 'json_object' },
   })
 

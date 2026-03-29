@@ -103,15 +103,15 @@ export default function StepTwo({
     setFilteredRepos(filtered)
   }, [searchQuery, sortBy, repos])
 
-  const handleToggleRepo = (repoUrl: string) => {
-    if (selectedRepos.includes(repoUrl)) {
-      setSelectedRepos(selectedRepos.filter((url) => url !== repoUrl))
+  const handleToggleRepo = (repoFullName: string) => {
+    if (selectedRepos.includes(repoFullName)) {
+      setSelectedRepos(selectedRepos.filter((name) => name !== repoFullName))
     } else {
       if (selectedRepos.length >= 5) {
         toast.error('You can select a maximum of 5 repositories')
         return
       }
-      setSelectedRepos([...selectedRepos, repoUrl])
+      setSelectedRepos([...selectedRepos, repoFullName])
     }
   }
 
@@ -234,7 +234,7 @@ export default function StepTwo({
         ) : (
           <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
             {filteredRepos.map((repo) => {
-              const isSelected = selectedRepos.includes(repo.html_url)
+              const isSelected = selectedRepos.includes(repo.full_name)
 
               return (
                 <Label
@@ -253,7 +253,7 @@ export default function StepTwo({
                       <Checkbox
                         id={`repo-${repo.id}`}
                         checked={isSelected}
-                        onCheckedChange={() => handleToggleRepo(repo.html_url)}
+                        onCheckedChange={() => handleToggleRepo(repo.full_name)}
                         className="mt-1"
                       />
 
