@@ -43,9 +43,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         await dbConnect()
         const dbUser = await UserModel.findOne({ email: session.user.email })
         if (dbUser) {
-          const u = session.user as unknown as Record<string, unknown>
+          const u = session.user as any
           u.id = dbUser._id.toString()
           u.github_username = dbUser.github_username
+          u.image = dbUser.image || u.image // Use DB image if available, fallback to provider image
         }
       }
       return session

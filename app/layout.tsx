@@ -3,6 +3,7 @@ import { Geist } from 'next/font/google'
 import './globals.css'
 import { SessionProvider } from '@/lib/auth-client'
 import { NavBar } from '@/components/Navbar'
+import StoreInitializer from '@/components/StoreInitializer'
 
 const geist = Geist({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${geist.className} bg-black text-white antialiased`}>
         <SessionProvider>
+          <StoreInitializer />
           <NavBar />
           {children}
         </SessionProvider>
