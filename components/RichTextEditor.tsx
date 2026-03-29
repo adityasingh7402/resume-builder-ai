@@ -46,7 +46,7 @@ export default function RichTextEditor({
             attributes: {
                 class: cn(
                     'prose prose-sm max-w-none focus:outline-none',
-                    'text-sm text-neutral-700 leading-relaxed',
+                    'text-sm text-neutral-900 leading-relaxed',
                     className
                 ),
             },

@@ -95,7 +95,7 @@ export default function EditorPanel({ content, onContentChange }: EditorPanelPro
     <div className="p-6 space-y-6">
       <div>
         <SubHeading>Edit Resume</SubHeading>
-        <p className="text-sm text-neutral-600 mt-1">
+        <p className="text-sm text-neutral-700 mt-1 font-medium">
           Click on any section to edit. Changes are saved automatically.
         </p>
       </div>
@@ -204,7 +204,7 @@ export default function EditorPanel({ content, onContentChange }: EditorPanelPro
 
                 {/* Technologies */}
                 <div className="space-y-2">
-                  <Label className="text-xs text-neutral-600">Technologies</Label>
+                  <Label className="text-xs text-neutral-800 font-semibold">Technologies</Label>
                   <Input
                     value={project.technologies.join(', ')}
                     onChange={(e) => handleUpdateTechnologies(
@@ -212,13 +212,13 @@ export default function EditorPanel({ content, onContentChange }: EditorPanelPro
                       e.target.value.split(',').map(t => t.trim()).filter(Boolean)
                     )}
                     placeholder="React, Node.js, MongoDB..."
-                    className="text-sm"
+                    className="text-sm text-neutral-900"
                   />
                 </div>
 
                 {/* Bullets */}
                 <div className="space-y-2">
-                  <Label className="text-xs text-neutral-600">Bullet Points</Label>
+                  <Label className="text-xs text-neutral-800 font-semibold">Bullet Points</Label>
                   <div className="space-y-2">
                     {project.bullets.map((bullet, bulletIdx) => (
                       <div key={bulletIdx} className="flex items-start gap-2">
@@ -288,7 +288,7 @@ export default function EditorPanel({ content, onContentChange }: EditorPanelPro
           <AccordionContent className="space-y-4 pt-4">
             {Object.entries(content.skills).map(([category, skills]) => (
               <div key={category} className="space-y-2">
-                <Label className="text-sm font-medium text-neutral-700 capitalize">
+                <Label className="text-sm font-semibold text-neutral-800 capitalize">
                   {category}
                 </Label>
                 <Input
@@ -298,7 +298,7 @@ export default function EditorPanel({ content, onContentChange }: EditorPanelPro
                     e.target.value.split(',').map(s => s.trim()).filter(Boolean)
                   )}
                   placeholder={`Add ${category} skills...`}
-                  className="text-sm"
+                  className="text-sm text-neutral-900"
                 />
               </div>
             ))}

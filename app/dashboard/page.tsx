@@ -1,8 +1,7 @@
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
-import ResumeGeneratorWizard from '@/components/ResumeGeneratorWizard'
+import DashboardView from '@/components/DashboardView'
 import { Container } from '@/components/Container'
-import { Heading } from '@/components/Heading'
 
 export default async function DashboardPage() {
   const session = await auth()
@@ -14,7 +13,7 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-dvh bg-neutral-50">
       <Container className="py-8">
-        <ResumeGeneratorWizard />
+        <DashboardView />
       </Container>
     </div>
   )

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${geist.className} bg-black text-white antialiased`}>
+      <body className={`${geist.className} bg-background text-foreground antialiased`}>
         <SessionProvider>
           <StoreInitializer />
           <NavBar />
