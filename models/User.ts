@@ -57,8 +57,8 @@ const WorkSchema = new Schema(
 
 const UserSchema = new Schema<IUser>(
   {
-    full_name: { type: String, required: true },
-    name: { type: String, required: true },
+    full_name: { type: String, default: '' },
+    name: { type: String, default: '' },
     email: { type: String, required: true, unique: true },
     image: { type: String },
     github_username: { type: String, required: true, unique: true, index: true },

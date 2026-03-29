@@ -19,11 +19,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const username = githubProfile?.login
         if (!username) return false
 
-        const existing = await UserModel.findOne({ email: user.email ?? '' })
+        const email = user.email || `${username}@github.com`
+        const existing = await UserModel.findOne({ email })
         if (!existing) {
           await UserModel.create({
             name: user.name ?? username,
-            email: user.email ?? '',
+            full_name: user.name ?? username,
+            email,
             image: user.image ?? '',
             github_username: username,
           })
